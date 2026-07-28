@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Proofpane</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/htmx.org@2.0.1"></script>
+  <script src="https://unpkg.com/htmx-ext-sse@2.2.2/sse.js"></script>
+</head>
+<body class="dark-theme">
+  <div class="app-container">
+    <header class="glass-header">
+      <h1>Proofpane <span class="badge">Live</span></h1>
+    </header>
+    
+    <main id="main-content" class="content-area" hx-ext="sse" sse-connect="/events">
+      <div id="proof-container" sse-swap="message">
+        <div class="panel">
+          <h2>Tactic State</h2>
+          <div id="goal-panel" class="code-content">
+            <div class="empty-state">No active goals</div>
+          </div>
+        </div>
+        
+        <div class="panel">
+          <h2>Expected Type</h2>
+          <div id="term-panel" class="code-content">
+            <div class="empty-state">No term goals</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
